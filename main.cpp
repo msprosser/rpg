@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     Arme epee("Epee des Mille Verites", 10);
     Humain joueur("Bob", 70, 75, 20, 6);
-//    joueur.equiperMainDroite(epee);
+    joueur.equiperMainDroite(epee);
 
     Humain garde1("Garde", 45, 55, 20, 0);
 
