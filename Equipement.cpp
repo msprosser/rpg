@@ -1,4 +1,5 @@
 #include "Equipement.h"
+#include <cmath>
 
 Equipement::Equipement()
 {

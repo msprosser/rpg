@@ -1,6 +1,5 @@
 #ifndef DE_H
 #define DE_H
-#include <QGlobal.h>
 #include <QTime>
 
 

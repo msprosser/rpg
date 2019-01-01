@@ -41,7 +41,7 @@ Combat::Combat(Personnage joueur, vector<Personnage> allies, vector<Personnage> 
 void Combat::updateEstFini() // Fonction a revoir !!
 {
     // Joueur
-    if (&m_joueur.getVie == 0) {
+    if (m_joueur.getVie() == 0) {
 //        return true; // Si le joueur est mort, la partie est Game Over, donc notamment le combat peut s'arreter
     }
     // Les ennemis
