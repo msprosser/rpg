@@ -1,5 +1,6 @@
 #include "Humain.h"
 Humain::Humain() :
+    Personnage(),
     m_equipementMainDroite(nullptr)
 {
 }
@@ -13,7 +14,6 @@ Humain::Humain(Personnage const& PersonnageACopier) :
     m_physique = PersonnageACopier.getPhysique();
     m_mental = PersonnageACopier.getMental();
     m_degats = PersonnageACopier.getDegats();
-    m_d100 = PersonnageACopier.getD100();
 }
 
 Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* arme) :

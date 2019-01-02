@@ -6,7 +6,6 @@
 #include "De.h"
 #include <cmath>
 #include <iostream>
-using namespace std;
 #include <vector>
 
 #include "InterfaceUtilisateur.h"
@@ -37,7 +36,6 @@ public:
     int getPhysique() const;
     int getMental() const;
     int getDegats() const;
-    De getD100() const;
 
     // Setters :
 
@@ -57,7 +55,6 @@ protected:
     int m_vie;
     int m_psy;
     int m_degats; // Les degats que peut infliger le personnage 'nu'
-    De m_d100;
 };
 
 

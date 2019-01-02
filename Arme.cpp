@@ -22,7 +22,3 @@ Arme::Arme(QString nom, int degats)
 int Arme::infligerDegats(int jetD6) {
     return m_degats + jetD6;
 }
-Arme* Arme::getPointer()
-{
-    return this;
-}

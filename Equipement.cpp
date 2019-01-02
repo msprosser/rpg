@@ -20,11 +20,6 @@ Equipement::Equipement(bool estContondant)
     m_estVide = false;
 }
 
-//~Equipement()
-//{
-
-//}
-
 int Equipement::infligerDegats(int jetD6) {
     return m_degats + round(jetD6 / 6);
 }
@@ -44,8 +39,3 @@ QString Equipement::getNom() const
 {
     return m_nom;
 }
-
-Equipement* Equipement::getPointer() {
-    return this;
-}
-

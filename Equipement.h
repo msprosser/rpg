@@ -15,7 +15,6 @@ public:
     bool getEstContondant() const;
     QString getNom() const;
     virtual int infligerDegats(int jetD6);
-    Equipement* getPointer();
 
 protected:
     QString m_nom;
