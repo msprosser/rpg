@@ -20,6 +20,11 @@ Equipement::Equipement(bool estContondant)
     m_estVide = false;
 }
 
+//~Equipement()
+//{
+
+//}
+
 int Equipement::infligerDegats(int jetD6) {
     return m_degats + round(jetD6 / 6);
 }
