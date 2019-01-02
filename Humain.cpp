@@ -1,10 +1,11 @@
 #include "Humain.h"
-Humain::Humain() : m_equipementMainDroite(nullptr)
+Humain::Humain() :
+    m_equipementMainDroite(nullptr)
 {
-    //m_equipementMainDroite = new Equipement();
 }
 
-Humain::Humain(Personnage const& PersonnageACopier) : m_equipementMainDroite(nullptr)
+Humain::Humain(Personnage const& PersonnageACopier) :
+    m_equipementMainDroite(nullptr)
 {
     m_nom = PersonnageACopier.getNom();
     m_vie = PersonnageACopier.getVie();
@@ -16,21 +17,18 @@ Humain::Humain(Personnage const& PersonnageACopier) : m_equipementMainDroite(nul
 }
 
 Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* arme) :
-    m_nom(nom),
-    m_physique(physique),
-    m_mental(mental),
-    m_vie(vie),
-    m_psy(psy),
+    Personnage(nom, physique, mental, vie, psy),
     m_equipementMainDroite(arme)
 {
     m_degats = 1;
 }
+
 // Nécessaire de surcharger le constructeur pour désallouer la mémoire occupée par les pointeurs
 Humain::~Humain()
-
 {
     delete m_equipementMainDroite;
 }
+
 // Nécessaire de surcharger l'opérateur= à cause des pointeurs
 Humain& Humain::operator=(Humain const& humainACopier)
 {

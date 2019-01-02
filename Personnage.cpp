@@ -4,10 +4,20 @@ Personnage::Personnage()
 {
     De m_d100;
 }
+
 Personnage::Personnage(QString nom)
 {
     m_nom = nom;
     De m_d100;
+}
+
+Personnage::Personnage(QString nom, int physique, int mental, int vie, int psy) :
+    m_nom(nom),
+    m_physique(physique),
+    m_mental(mental),
+    m_vie(vie),
+    m_psy(psy)
+{
 }
 
 // Jets :

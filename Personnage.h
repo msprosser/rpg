@@ -17,6 +17,10 @@ public:
     Personnage();
     Personnage(QString nom);
 
+protected:
+    Personnage(QString nom, int physique, int mental, int vie, int psy);
+
+public:
     int jeterD100();
     int jeterD6();
     bool reussirJetPhysique();
@@ -48,10 +52,10 @@ public:
 
 protected:
     QString m_nom;
-    int m_vie;
-    int m_psy;
     int m_physique;
     int m_mental;
+    int m_vie;
+    int m_psy;
     int m_degats; // Les degats que peut infliger le personnage 'nu'
     De m_d100;
 };
