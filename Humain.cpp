@@ -1,7 +1,6 @@
 #include "Humain.h"
 Humain::Humain() : m_equipementMainDroite(nullptr)
 {
-    De m_d100;
     //m_equipementMainDroite = new Equipement();
 }
 
@@ -16,15 +15,14 @@ Humain::Humain(Personnage const& PersonnageACopier) : m_equipementMainDroite(nul
     m_d100 = PersonnageACopier.getD100();
 }
 
-Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* armeMainDroite) :
-    m_equipementMainDroite(armeMainDroite)
+Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* arme) :
+    m_nom(nom),
+    m_physique(physique),
+    m_mental(mental),
+    m_vie(vie),
+    m_psy(psy),
+    m_equipementMainDroite(arme)
 {
-    De m_d100;
-    m_physique = physique;
-    m_mental = mental;
-    m_vie = vie;
-    m_psy = psy;
-    m_nom = nom;
     m_degats = 1;
 }
 // Nécessaire de surcharger le constructeur pour désallouer la mémoire occupée par les pointeurs

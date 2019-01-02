@@ -12,7 +12,7 @@ public:
     Humain();
     ~Humain();
     Humain(Personnage const& PersonnageACopier); // Le prototype du constructeur de copie, nécessaire dès lors qu'on utilise un pointeur
-    Humain(QString nom, int physique, int mental, int vie, int psy);
+    Humain(QString nom, int physique, int mental, int vie, int psy, Arme* arme);
     Humain& operator=(Humain const& humainACopier);
 
     void attaquer(Personnage &cible);
