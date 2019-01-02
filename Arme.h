@@ -8,8 +8,8 @@ public:
     Arme();
     Arme(int degats);
     Arme(QString nom, int degats);
-    Arme* getPointer();
     int infligerDegats(int jetD6);
+
 private:
     int m_degats;
 };
