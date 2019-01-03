@@ -16,6 +16,7 @@ public:
     static void afficherQS(QString qs);
     static void afficherLigneQS(QString qs);
     static void afficherInt(int i);
+    static void afficherBool(bool boolean);
     static void passerLignes(int n);
 
     // Dérivés de cin :

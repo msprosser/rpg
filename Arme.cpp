@@ -2,23 +2,18 @@
 
 Arme::Arme()
 {
-    m_estContondant = true;
-
 }
-Arme::Arme(int degats)
+Arme::Arme(QString nom, int valeur, int degats) : Equipement(nom, valeur), m_degats(degats)
 {
-    m_estContondant = true;
-    m_estVide = false;
-    m_degats = degats;
+}
 
-}
-Arme::Arme(QString nom, int degats)
-{
-    m_nom = nom;
-    m_degats = degats;
-    m_estContondant = true;
-    m_estVide = false;
-}
+
 int Arme::infligerDegats(int jetD6) {
     return m_degats + jetD6;
+}
+
+// Getters :
+int Arme::getDegats() const
+{
+    return m_degats;
 }

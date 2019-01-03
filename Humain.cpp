@@ -49,28 +49,28 @@ Humain& Humain::operator=(Humain const& humainACopier)
 
 void Humain::attaquer(Personnage &cible)
 {
-    if(Humain::reussirJetPhysique()) {
-        cout << "Attaque : Jet physique Reussi !" << endl;
+//    if(Humain::reussirJetPhysique()) {
+//        cout << "Attaque : Jet physique Reussi !" << endl;
 
-        if ((m_equipementMainDroite != 0) && (!m_equipementMainDroite->getEstVide())) { // L'humain qui attaque possède un item d'équipement dans sa main droite
-            if (m_equipementMainDroite->getEstContondant()) { // cet item peut infliger des dégats
-                cout << "Attaquant est armee (" << m_equipementMainDroite->getNom().toLocal8Bit().constData() << ")" << endl;
-                cible.recevoirDegats(m_equipementMainDroite->infligerDegats(Humain::jeterD6()));
-            }
-            else {
-                // L'attaquant attaqué alors qu'il avait un objet inoffensif dans la main, comme par exemple la partie sporadique du fenouil !
-                cout << "Attaquant a les mains prises et ne peut pas blesser l'adversaire" << endl;
-            }
-        }
-        else {
-            cout << Humain::m_nom.toLocal8Bit().constData() <<" y va a mains nues !" << endl;
-            cible.recevoirDegats(Humain::m_degats);
-        }
+//        if ((m_equipementMainDroite != 0) && (!m_equipementMainDroite->getEstVide())) { // L'humain qui attaque possède un item d'équipement dans sa main droite
+//            if (m_equipementMainDroite->getEstContondant()) { // cet item peut infliger des dégats
+//                cout << "Attaquant est armee (" << m_equipementMainDroite->getNom().toLocal8Bit().constData() << ")" << endl;
+//                cible.recevoirDegats(m_equipementMainDroite->infligerDegats(Humain::jeterD6()));
+//            }
+//            else {
+//                // L'attaquant attaqué alors qu'il avait un objet inoffensif dans la main, comme par exemple la partie sporadique du fenouil !
+//                cout << "Attaquant a les mains prises et ne peut pas blesser l'adversaire" << endl;
+//            }
+//        }
+//        else {
+//            cout << Humain::m_nom.toLocal8Bit().constData() <<" y va a mains nues !" << endl;
+//            cible.recevoirDegats(Humain::m_degats);
+//        }
 
-    }
-    else {
-        cout << "Attaque : Jet physique rate" << endl;
-    }
+//    }
+//    else {
+//        cout << "Attaque : Jet physique rate" << endl;
+//    }
 }
 
 void Humain::equiperMainDroite(Equipement* equipementAEquiper)

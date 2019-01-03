@@ -40,6 +40,11 @@ void InterfaceUtilisateur::afficherInt(int i)
     cout << i;
 }
 
+void InterfaceUtilisateur::afficherBool(bool boolean)
+{
+    cout << boolean;
+}
+
 int InterfaceUtilisateur::demanderReponseInt()
 {
     int reponseUtilisateur;

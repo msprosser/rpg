@@ -6,11 +6,13 @@ class Arme : public Equipement
 {
 public:
     Arme();
-    Arme(int degats);
-    Arme(QString nom, int degats);
+    Arme(QString nom, int valeur, int degats);
     int infligerDegats(int jetD6);
 
-private:
+    // Getter
+    int getDegats() const;
+
+protected:
     int m_degats;
 };
 

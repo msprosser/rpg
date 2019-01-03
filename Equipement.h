@@ -1,27 +1,19 @@
 #ifndef EQUIPEMENT_H
 #define EQUIPEMENT_H
 #include <QString>
+#include "ObjetInventaire.h"
 
-class Equipement
+class Equipement : public ObjetInventaire
 {
 public:
     Equipement();
-    Equipement(QString nom);
-    Equipement(bool estContondant);
-    virtual ~Equipement() {}
+    Equipement(QString nom, int valeur);
 
-    // Getter:
-    bool getEstVide() const;
-    bool getEstContondant() const;
-    QString getNom() const;
-    virtual int infligerDegats(int jetD6);
+    // Getter
+    bool getEstEquipe() const;
 
 protected:
-    QString m_nom;
-    int m_valeur;
-    bool m_estContondant;
-    int m_degats;
-    bool m_estVide; // est mis à vrai quand aucune autre info n'est renseignée
+    bool m_estEquipe;
 };
 
 #endif // EQUIPEMENT_H
