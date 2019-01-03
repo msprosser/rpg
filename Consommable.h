@@ -11,7 +11,6 @@ public:
     void consommer();
 
     // Getters :
-    bool getEstConsomme() const;
     int getBonusVie() const;
     int getBonusPsy() const;
 
@@ -19,7 +18,6 @@ public:
     void decrire();
 
 protected:
-    bool m_estConsomme;
     int m_bonusVie;
     int m_bonusPsy;
 };
