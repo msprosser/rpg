@@ -8,7 +8,7 @@ public:
     Arme();
     Arme(int degats);
     Arme(QString nom, int degats);
-    int infligerDegats(int jetD6);
+    int infligerDegats();
 
 private:
     int m_degats;
