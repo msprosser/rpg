@@ -39,7 +39,7 @@ Humain& Humain::operator=(Humain const& humainACopier)
         m_psy = humainACopier.m_psy;
 
         delete m_equipementMainDroite;
-        m_equipementMainDroite = new Equipement(*(humainACopier.m_equipementMainDroite));
+/// @todo WTF?        m_equipementMainDroite = new Equipement(*(humainACopier.m_equipementMainDroite));
 
     }
 
@@ -55,7 +55,7 @@ void Humain::attaquer(Personnage &cible)
         if ((m_equipementMainDroite != 0) && (!m_equipementMainDroite->getEstVide())) { // L'humain qui attaque possède un item d'équipement dans sa main droite
             if (m_equipementMainDroite->getEstContondant()) { // cet item peut infliger des dégats
                 cout << "Attaquant est armee (" << m_equipementMainDroite->getNom().toLocal8Bit().constData() << ")" << endl;
-                cible.recevoirDegats(m_equipementMainDroite->infligerDegats(Humain::jeterD6()));
+                cible.recevoirDegats(m_equipementMainDroite->infligerDegats());
             }
             else {
                 // L'attaquant attaqué alors qu'il avait un objet inoffensif dans la main, comme par exemple la partie sporadique du fenouil !

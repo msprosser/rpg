@@ -14,7 +14,7 @@ public:
     bool getEstVide() const;
     bool getEstContondant() const;
     QString getNom() const;
-    virtual int infligerDegats(int jetD6);
+    virtual int infligerDegats() = 0;
 
 protected:
     QString m_nom;
