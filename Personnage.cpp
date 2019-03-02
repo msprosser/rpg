@@ -1,12 +1,23 @@
 #include "Personnage.h"
 
-Personnage::Personnage()
+Personnage::Personnage() :
+    m_nom(),
+    m_physique(0),
+    m_mental(0),
+    m_vie(0),
+    m_psy(0),
+    m_degats(0)
 {
 }
 
-Personnage::Personnage(QString nom)
+Personnage::Personnage(QString nom) :
+    m_nom(nom),
+    m_physique(0),
+    m_mental(0),
+    m_vie(0),
+    m_psy(0),
+    m_degats(0)
 {
-    m_nom = nom;
 }
 
 Personnage::Personnage(QString nom, int physique, int mental, int vie, int psy) :
@@ -14,7 +25,8 @@ Personnage::Personnage(QString nom, int physique, int mental, int vie, int psy) 
     m_physique(physique),
     m_mental(mental),
     m_vie(vie),
-    m_psy(psy)
+    m_psy(psy),
+    m_degats(0)
 {
 }
 

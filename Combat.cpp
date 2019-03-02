@@ -1,41 +1,55 @@
 #include "Combat.h"
 
-Combat::Combat()
+Combat::Combat() :
+    m_tour(0),
+    m_estFini(false),
+    m_nbAllies(0),
+    m_nbEnnemis(0),
+    m_nbParticipants(1),
+    m_joueur(),
+    m_allies(vector<Personnage>(0)), // les allies ne comprennent pas le joueur lui-meme
+    m_ennemis(vector<Personnage>(0)),
+    m_participants(vector<Personnage>(0))
 {
-    m_estFini = false;
-    m_allies = vector<Personnage>(0); // les allies ne comprennent pas le joueur lui-meme
-    m_ennemis = vector<Personnage>(0);
-    m_nbAllies = 0;
-    m_nbEnnemis = 0;
-    m_nbParticipants = 1;
-    m_partipants = vector<Personnage>(0);
-    m_tour = 0;
+
 }
 
-Combat::Combat(Personnage joueur, vector<Personnage> ennemis)
+Combat::Combat(Personnage& joueur, vector<Personnage>& ennemis) :
+    m_tour(0),
+    m_estFini(false),
+    m_nbAllies(0),
+    m_nbEnnemis(ennemis.size()),
+    m_nbParticipants(m_nbAllies + m_nbEnnemis + 1),
+    m_joueur(joueur),
+    m_allies(vector<Personnage>(0)), // les allies ne comprennent pas le joueur lui-meme
+    m_ennemis(ennemis),
+    m_participants(vector<Personnage>(m_nbParticipants))
 {
-    m_estFini = false;
-    m_joueur = joueur;
-    m_allies = vector<Personnage>(0); // les allies ne comprennent pas le joueur lui-meme
-    m_ennemis = ennemis;
-    m_nbAllies = 0;
-    m_nbEnnemis = ennemis.size();
-    m_nbParticipants = m_nbAllies + m_nbEnnemis + 1; // du coup ne pas oublier le joueur ;-)
-    m_partipants = vector<Personnage>(m_nbParticipants);
-    m_tour = 0;
+    auto it = m_participants.begin();
+    m_participants.insert(it, m_joueur);
+    m_participants.insert(it, m_ennemis.begin(), m_ennemis.end());
 }
 
-Combat::Combat(Personnage joueur, vector<Personnage> allies, vector<Personnage> ennemis)
+Combat::Combat(Personnage& joueur, vector<Personnage>& allies, vector<Personnage>& ennemis) :
+    m_tour(0),
+    m_estFini(false),
+    m_nbAllies(allies.size()),
+    m_nbEnnemis(ennemis.size()),
+    m_nbParticipants(m_nbAllies + m_nbEnnemis + 1),
+    m_joueur(joueur),
+    m_allies(allies),
+    m_ennemis(ennemis),
+    m_participants(vector<Personnage>(static_cast<std::size_t>(m_nbParticipants)))
 {
-    m_estFini = false;
-    m_joueur = joueur;
-    m_allies = allies; // les allies ne comprennent pas le joueur lui-meme
-    m_ennemis = ennemis;
-    m_nbAllies = allies.size();
-    m_nbEnnemis = ennemis.size();
-    m_nbParticipants = m_nbAllies + m_nbEnnemis + 1; // du coup ne pas oublier le joueur ;-)
-    m_partipants = vector<Personnage>(m_nbParticipants);
-    m_tour = 0;
+    auto it = m_participants.begin();
+    m_participants.insert(it, m_joueur);
+    m_participants.insert(it, m_ennemis.begin(), m_ennemis.end());
+    m_participants.insert(it, m_allies.begin(), m_allies.end());
+}
+
+Combat::~Combat()
+{
+
 }
 
 void Combat::updateEstFini() // Fonction a revoir !!
@@ -69,8 +83,8 @@ vector<Personnage> Combat::getAdversaires(Personnage attaquant) {
 void Combat::initializeParticipants()
 {
     // temporaire, intelligence plus tard
-    m_partipants[0] = m_joueur;
-    m_partipants[1] = m_ennemis[0];
+    m_participants[0] = m_joueur;
+    m_participants[1] = m_ennemis[0];
 }
 
 
@@ -79,18 +93,18 @@ void Combat::avancer()
 {
     for (int i = 0; i < m_nbParticipants; i++) {
         // if not me ; if not ded
-        if (m_partipants[i].getVie() > 0) {
+        if (m_participants[i].getVie() > 0) {
             // Les personnages tués dans un tour précédents, ou plus tôt ce tour ci n'ont plus le droit de taper aui aue ce soit :P
-            if (m_partipants[i].getNom() != m_joueur.getNom()) { // TODO: Change this test and  add estJoueur sur le Personnage, et faire le test là dessus
+            if (m_participants[i].getNom() != m_joueur.getNom()) { // TODO: Change this test and  add estJoueur sur le Personnage, et faire le test là dessus
                 // Les actions du joueur sont gérées différemment, ici on s'intéresse aux PNJ
-//                Personnage cible = m_partipants[i].choisirCible(this->getAdversaires(m_partipants[i]));
-//                m_partipants[i].attaquer(cible);
+//                Personnage cible = m_participants[i].choisirCible(this->getAdversaires(m_participants[i]));
+//                m_participants[i].attaquer(cible);
             }
             else {
                 // C'est au tour du joueur
                 // temporaire: le joueur est géré comme les autres
-//                Personnage cible = m_partipants[i].choisirCible(this->getAdversaires(m_partipants[i]));
-//                m_partipants[i].attaquer(cible);
+//                Personnage cible = m_participants[i].choisirCible(this->getAdversaires(m_participants[i]));
+//                m_participants[i].attaquer(cible);
             }
         }
     }

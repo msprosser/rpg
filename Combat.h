@@ -10,8 +10,9 @@ class Combat
 {
 public:
     Combat();
-    Combat(Personnage joueur, vector<Personnage> ennemis);
-    Combat(Personnage joueur, vector<Personnage> allies, vector<Personnage> ennemis);
+    Combat(Personnage& joueur, vector<Personnage>& ennemis);
+    Combat(Personnage& joueur, vector<Personnage>& allies, vector<Personnage>& ennemis);
+    virtual ~Combat();
 
     virtual void updateEstFini();
     void updateTour();
@@ -27,16 +28,17 @@ public:
     // Printer :
     void afficherTour() const;
     void decrireEtatActuel() const;
+
 protected:
-    int m_tour; // numero du tour en cours
+    unsigned int m_tour; // numero du tour en cours
     bool m_estFini;
-    int m_nbAllies;
-    int m_nbEnnemis;
-    int m_nbParticipants;
+    unsigned long m_nbAllies;
+    unsigned long m_nbEnnemis;
+    unsigned long m_nbParticipants;
     Personnage m_joueur;
     vector<Personnage> m_allies;
     vector<Personnage> m_ennemis;
-    vector<Personnage> m_partipants; // dans l'ordre de passage dans le tour
+    vector<Personnage> m_participants; // dans l'ordre de passage dans le tour
 };
 
 #endif // COMBAT_H
