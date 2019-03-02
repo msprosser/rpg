@@ -6,7 +6,6 @@ Equipement::Equipement() :
 {
 }
 
-
 Equipement::Equipement(QString nom) :
     m_nom(nom),
     m_estContondant(false),
@@ -19,6 +18,11 @@ Equipement::Equipement(bool estContondant) :
     m_estContondant(estContondant),
     m_estVide(false)
 {
+}
+
+Equipement::~Equipement()
+{
+
 }
 
 //int Equipement::infligerDegats(int jetD6) {

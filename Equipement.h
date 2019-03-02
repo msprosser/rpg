@@ -8,7 +8,7 @@ public:
     Equipement();
     Equipement(QString nom);
     Equipement(bool estContondant);
-    virtual ~Equipement() {}
+    virtual ~Equipement();
 
     // Getter:
     bool getEstVide() const;
