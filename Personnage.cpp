@@ -2,41 +2,49 @@
 
 Personnage::Personnage()
 {
-    De m_d100;
 }
+
 Personnage::Personnage(QString nom)
 {
     m_nom = nom;
-    De m_d100;
+}
+
+Personnage::Personnage(QString nom, int physique, int mental, int vie, int psy) :
+    m_nom(nom),
+    m_physique(physique),
+    m_mental(mental),
+    m_vie(vie),
+    m_psy(psy)
+{
 }
 
 // Jets :
 int Personnage::jeterD100()
 {
-    int jetD100 = m_d100.jeter();
-    cout << "D100 (" << Personnage::m_nom.toLocal8Bit().constData() << "): " << jetD100 << endl;
+    int jetD100 = De::jeter(100);
+    cout << "D100 (" << m_nom.toLocal8Bit().constData() << "): " << jetD100 << endl;
     return jetD100;
 }
 int Personnage::jeterD6()
 {
-    int jetD6 = round(1 + 6 * (Personnage::jeterD100() - 1) / 100);
-    cout << "D6 (" << Personnage::m_nom.toLocal8Bit().constData() << "): " << jetD6 << endl;
+    int jetD6 = De::jeter(6);
+    cout << "D6 (" << m_nom.toLocal8Bit().constData() << "): " << jetD6 << endl;
     return jetD6;
 }
 bool Personnage::reussirJetPhysique()
 {
-    int jetD100 = Personnage::jeterD100();
+    int jetD100 = jeterD100();
     return ((m_physique - jetD100) > 0);
 }
 bool Personnage::reussirJetMental()
 {
-    int jetD100 = Personnage::jeterD100();
+    int jetD100 = jeterD100();
     return ((m_mental - jetD100) > 0);
 }
 int Personnage::faireJetInitiative()
 {
-    int jetInitiative = Personnage::jeterD6() * (m_mental + m_physique) / 12;
-    cout << "Jet d'initiative (" << Personnage::m_nom.toLocal8Bit().constData() << "): " << jetInitiative << endl;
+    int jetInitiative = jeterD6() * (m_mental + m_physique) / 12;
+    cout << "Jet d'initiative (" << m_nom.toLocal8Bit().constData() << "): " << jetInitiative << endl;
     return jetInitiative;
 
 }
@@ -82,10 +90,6 @@ int Personnage::getMental() const
 int Personnage::getDegats() const
 {
     return m_degats;
-}
-De Personnage::getD100() const
-{
-    return m_d100;
 }
 
 // Setters :

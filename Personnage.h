@@ -6,7 +6,6 @@
 #include "De.h"
 #include <cmath>
 #include <iostream>
-using namespace std;
 #include <vector>
 
 #include "InterfaceUtilisateur.h"
@@ -17,6 +16,10 @@ public:
     Personnage();
     Personnage(QString nom);
 
+protected:
+    Personnage(QString nom, int physique, int mental, int vie, int psy);
+
+public:
     int jeterD100();
     int jeterD6();
     bool reussirJetPhysique();
@@ -33,7 +36,6 @@ public:
     int getPhysique() const;
     int getMental() const;
     int getDegats() const;
-    De getD100() const;
 
     // Setters :
 
@@ -48,12 +50,11 @@ public:
 
 protected:
     QString m_nom;
-    int m_vie;
-    int m_psy;
     int m_physique;
     int m_mental;
+    int m_vie;
+    int m_psy;
     int m_degats; // Les degats que peut infliger le personnage 'nu'
-    De m_d100;
 };
 
 

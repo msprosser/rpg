@@ -1,4 +1,5 @@
 #include "Arme.h"
+#include "De.h"
 
 Arme::Arme()
 {
@@ -19,10 +20,7 @@ Arme::Arme(QString nom, int degats)
     m_estContondant = true;
     m_estVide = false;
 }
-int Arme::infligerDegats(int jetD6) {
-    return m_degats + jetD6;
-}
-Arme* Arme::getPointer()
+int Arme::infligerDegats()
 {
-    return this;
+    return m_degats + De::jeter(6);
 }

@@ -20,10 +20,10 @@ int main(int argc, char *argv[])
     InterfaceUtilisateur ui;
 
     Arme epee("Epee des Mille Verites", 10);
-    Humain joueur("Bob", 70, 75, 20, 6);
-//    joueur.equiperMainDroite(epee);
 
-    Humain garde1("Garde", 45, 55, 20, 0);
+    Humain joueur(QString("Bob"), 70, 75, 20, 6, &epee);
+    Arme lance("Longue du zboub", 8);
+    Humain garde1(QString("Garde"), 45, 55, 20, 0, &lance);
 
     joueur.afficherCaracteristiques();
     joueur.afficherEtat();

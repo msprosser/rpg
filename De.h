@@ -1,18 +1,16 @@
 #ifndef DE_H
 #define DE_H
-#include <QGlobal.h>
 #include <QTime>
 
 
 class De
 {
 public:
-    De();
-    De(int nbFaces);
-    int jeter();
+    De() = delete;
+    De(De const& other) = delete;
+    De& operator=(De const& other) = delete;
 
-private:
-    int m_nbFaces;
+    static int jeter(int nbFaces);
 };
 
 #endif // DE_H

@@ -1,27 +1,29 @@
 #include "Equipement.h"
+#include <cmath>
 
-Equipement::Equipement()
+Equipement::Equipement() :
+    m_estVide(true)
 {
-    m_estVide = true;
 }
 
 
-Equipement::Equipement(QString nom)
+Equipement::Equipement(QString nom) :
+    m_nom(nom),
+    m_estContondant(false),
+    m_estVide(false)
 {
-    m_nom = nom;
-    m_estContondant = false;
-    m_estVide = false;
 }
 
-Equipement::Equipement(bool estContondant)
+Equipement::Equipement(bool estContondant) :
+    m_nom(),
+    m_estContondant(estContondant),
+    m_estVide(false)
 {
-    m_estContondant = estContondant;
-    m_estVide = false;
 }
 
-int Equipement::infligerDegats(int jetD6) {
-    return m_degats + round(jetD6 / 6);
-}
+//int Equipement::infligerDegats(int jetD6) {
+//    return m_degats + round(jetD6 / 6);
+//}
 
 // Getters :
 bool Equipement::getEstVide() const
@@ -38,8 +40,3 @@ QString Equipement::getNom() const
 {
     return m_nom;
 }
-
-Equipement* Equipement::getPointer() {
-    return this;
-}
-

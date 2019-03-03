@@ -1,11 +1,12 @@
 #include "Humain.h"
-Humain::Humain() : m_equipementMainDroite(nullptr)
+Humain::Humain() :
+    Personnage(),
+    m_equipementMainDroite(nullptr)
 {
-    De m_d100;
-    //m_equipementMainDroite = new Equipement();
 }
 
-Humain::Humain(Personnage const& PersonnageACopier) : m_equipementMainDroite(nullptr)
+Humain::Humain(Personnage const& PersonnageACopier) :
+    m_equipementMainDroite(nullptr)
 {
     m_nom = PersonnageACopier.getNom();
     m_vie = PersonnageACopier.getVie();
@@ -13,26 +14,21 @@ Humain::Humain(Personnage const& PersonnageACopier) : m_equipementMainDroite(nul
     m_physique = PersonnageACopier.getPhysique();
     m_mental = PersonnageACopier.getMental();
     m_degats = PersonnageACopier.getDegats();
-    m_d100 = PersonnageACopier.getD100();
 }
 
-Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* armeMainDroite) :
-    m_equipementMainDroite(armeMainDroite)
+Humain::Humain(QString nom, int physique, int mental, int vie, int psy, Arme* arme) :
+    Personnage(nom, physique, mental, vie, psy),
+    m_equipementMainDroite(arme)
 {
-    De m_d100;
-    m_physique = physique;
-    m_mental = mental;
-    m_vie = vie;
-    m_psy = psy;
-    m_nom = nom;
     m_degats = 1;
 }
+
 // Nécessaire de surcharger le constructeur pour désallouer la mémoire occupée par les pointeurs
 Humain::~Humain()
-
 {
     delete m_equipementMainDroite;
 }
+
 // Nécessaire de surcharger l'opérateur= à cause des pointeurs
 Humain& Humain::operator=(Humain const& humainACopier)
 {
@@ -43,7 +39,7 @@ Humain& Humain::operator=(Humain const& humainACopier)
         m_psy = humainACopier.m_psy;
 
         delete m_equipementMainDroite;
-        m_equipementMainDroite = new Equipement(*(humainACopier.m_equipementMainDroite));
+/// @todo WTF?        m_equipementMainDroite = new Equipement(*(humainACopier.m_equipementMainDroite));
 
     }
 
@@ -59,7 +55,7 @@ void Humain::attaquer(Personnage &cible)
         if ((m_equipementMainDroite != 0) && (!m_equipementMainDroite->getEstVide())) { // L'humain qui attaque possède un item d'équipement dans sa main droite
             if (m_equipementMainDroite->getEstContondant()) { // cet item peut infliger des dégats
                 cout << "Attaquant est armee (" << m_equipementMainDroite->getNom().toLocal8Bit().constData() << ")" << endl;
-                cible.recevoirDegats(m_equipementMainDroite->infligerDegats(Humain::jeterD6()));
+                cible.recevoirDegats(m_equipementMainDroite->infligerDegats());
             }
             else {
                 // L'attaquant attaqué alors qu'il avait un objet inoffensif dans la main, comme par exemple la partie sporadique du fenouil !

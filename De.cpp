@@ -1,19 +1,7 @@
 #include "De.h"
 
-De::De()
-{
-    m_nbFaces = 100;
+int De::jeter(int nbFaces) {
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
-}
-
-De::De(int nbFaces)
-{
-    m_nbFaces = nbFaces;
-    QTime time = QTime::currentTime();
-    qsrand((uint)time.msec());
-}
-
-int De::jeter() {
-    return qrand() % ((m_nbFaces + 1) - 1) + 1;
+    return qrand() % ((nbFaces + 1) - 1) + 1;
 }

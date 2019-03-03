@@ -8,13 +8,13 @@ public:
     Equipement();
     Equipement(QString nom);
     Equipement(bool estContondant);
+    virtual ~Equipement() {}
 
     // Getter:
     bool getEstVide() const;
     bool getEstContondant() const;
     QString getNom() const;
-    virtual int infligerDegats(int jetD6);
-    Equipement* getPointer();
+    virtual int infligerDegats() = 0;
 
 protected:
     QString m_nom;
